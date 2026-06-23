@@ -3,11 +3,15 @@
 import { ChevronDown, ChevronUp, Search, MessageSquare, Plus } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
+import DownloadAppModal from "@/components/DownloadAppModal";
+import { getUserInitial, useUserProfile } from "@/context/UserProfileContext";
 
 export default function Header() {
+  const { userName } = useUserProfile();
+  const userInitial = getUserInitial(userName);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [flatName, setFlatName] = useState("E E1108");
   const [isEditingFlat, setIsEditingFlat] = useState(false);
   const [lastTap, setLastTap] = useState(0);
@@ -49,28 +53,32 @@ export default function Header() {
           </button>
           <button 
             className="text-slate-700 hover:text-slate-900 transition-colors relative"
-            onClick={() => window.alert("Downloading MyGate App...")}
+            onClick={() => setIsDownloadOpen(true)}
+            aria-label="Download MyGate app"
           >
             <MessageSquare className="w-6 h-6" />
           </button>
-          <Link href="/settings" className="w-9 h-9 rounded-full bg-slate-400 text-white flex items-center justify-center font-medium shadow-sm">
-            G
+          <Link
+            href="/settings"
+            className="w-9 h-9 rounded-full bg-[#5C7192] text-white flex items-center justify-center font-medium shadow-sm"
+            title={userName}
+          >
+            {userInitial}
           </Link>
         </div>
       </header>
 
+      <DownloadAppModal open={isDownloadOpen} onClose={() => setIsDownloadOpen(false)} />
+
       {/* Dropdown Overlay */}
       {isDropdownOpen && (
         <div className="fixed inset-0 z-50 flex flex-col md:max-w-md md:mx-auto">
-          {/* Dimmed background taking up remaining space */}
           <div 
             className="absolute inset-0 bg-black/40"
             onClick={() => setIsDropdownOpen(false)}
           />
 
-          {/* Top Sheet Content */}
           <div className="bg-[#EFECE5] rounded-b-[32px] w-full pb-6 shadow-2xl relative animate-in slide-in-from-top-4 duration-300">
-            {/* Same Header but with ChevronUp */}
             <div className="flex items-center justify-between px-4 py-3">
               <button 
                 onClick={() => setIsDropdownOpen(false)}
@@ -86,18 +94,22 @@ export default function Header() {
                 </button>
                 <button 
                   className="text-slate-700 relative"
-                  onClick={() => window.alert("Downloading MyGate App...")}
+                  onClick={() => setIsDownloadOpen(true)}
+                  aria-label="Download MyGate app"
                 >
                   <MessageSquare className="w-6 h-6" />
                 </button>
-                <button className="w-9 h-9 rounded-full bg-slate-400 text-white flex items-center justify-center font-medium shadow-sm">
-                  A
-                </button>
+                <Link
+                  href="/settings"
+                  className="w-9 h-9 rounded-full bg-[#5C7192] text-white flex items-center justify-center font-medium shadow-sm"
+                  title={userName}
+                >
+                  {userInitial}
+                </Link>
               </div>
             </div>
 
             <div className="px-4 mt-2">
-              {/* Active Society */}
               <div className="flex justify-between items-center py-4 border-b border-gray-200/60">
                 <span className="text-[15px] text-slate-700 font-medium">E-E1108, Urbanrise Revolution One</span>
                 <div className="bg-red-400 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
@@ -105,7 +117,6 @@ export default function Header() {
                 </div>
               </div>
 
-              {/* Add New */}
               <button className="flex items-center gap-4 py-5 text-slate-800">
                 <div className="w-10 h-10 rounded-full border border-slate-400 flex items-center justify-center">
                   <Plus className="w-5 h-5 text-slate-700" />
@@ -113,7 +124,6 @@ export default function Header() {
                 <span className="text-base font-medium">Add Flat/Villa/Office</span>
               </button>
 
-              {/* Ad Banner */}
               <div className="mt-2 w-full aspect-[21/9] relative rounded-lg overflow-hidden">
                 <Image
                   src="/dropdown_ad_banner.png"
@@ -124,7 +134,6 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Handle Bar */}
             <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mt-6" />
           </div>
         </div>

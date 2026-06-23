@@ -1,17 +1,10 @@
 import { Bell, Plus, ChevronRight } from "lucide-react";
-import Image from "next/image";
 
 const updates = [
   {
-    name: "Moorthi M",
-    role: "", // None shown in UI, just name
-    image: "https://i.pravatar.cc/150?u=a042581f4e29026024d", // Random avatar placeholder
-    status: "gray", // Gray dot status
-  },
-  {
     name: "Daily Help",
     role: "",
-    icon: true, // Shows generic icon instead of image
+    icon: true,
     showPlus: true,
   }
 ];
@@ -25,7 +18,7 @@ export default function EntryUpdates({ children }: { children?: React.ReactNode 
       {/* Header */}
       <div className="flex items-center gap-2 mb-6">
         <Bell className="w-5 h-5 text-slate-800" />
-        <h2 className="text-lg font-bold text-slate-900">1 Entry Update</h2>
+        <h2 className="text-lg font-bold text-slate-900">0 Entry Updates</h2>
       </div>
 
       {/* Today's section */}

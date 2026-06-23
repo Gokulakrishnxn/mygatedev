@@ -2,9 +2,10 @@
 
 import { IconQRCode } from "../Icons";
 import { useState } from "react";
+import { getUserInitial, useUserProfile } from "@/context/UserProfileContext";
 
 export default function ProfileBlock() {
-  const [name, setName] = useState("Gokul");
+  const { userName, setUserName } = useUserProfile();
   const [draftName, setDraftName] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [lastTap, setLastTap] = useState(0);
@@ -33,7 +34,7 @@ export default function ProfileBlock() {
   const handleTap = () => {
     const now = Date.now();
     if (now - lastTap < 300) {
-      setDraftName(name);
+      setDraftName(userName);
       setIsEditing(true);
     }
     setLastTap(now);
@@ -46,13 +47,12 @@ export default function ProfileBlock() {
       return;
     }
     
-    // Only update ID if the name actually changed
-    if (draftName && draftName !== name) {
+    if (draftName.trim() && draftName.trim() !== userName) {
       const randomSuffix = Math.floor(100 + Math.random() * 900).toString();
       setMygateIdSuffix(randomSuffix);
     }
     
-    setName(draftName || name);
+    setUserName(draftName.trim() || userName);
     setIsEditing(false);
   };
 
@@ -73,7 +73,7 @@ export default function ProfileBlock() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="w-[72px] h-[72px] rounded-full bg-[#5C7192] flex items-center justify-center text-white text-[28px] font-medium shadow-sm">
-              {name.charAt(0).toUpperCase() || "A"}
+              {getUserInitial(userName)}
             </div>
             <div>
               {isEditing ? (
@@ -94,7 +94,7 @@ export default function ProfileBlock() {
                   onClick={handleTap}
                   title="Double tap to edit"
                 >
-                  {name}
+                  {userName}
                 </h2>
               )}
               <div className="inline-flex items-center gap-2 bg-[#F6F6F6] rounded-full px-3 py-1">
