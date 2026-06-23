@@ -9,6 +9,7 @@ export default function ProfileBlock() {
   const [isEditing, setIsEditing] = useState(false);
   const [lastTap, setLastTap] = useState(0);
   const [showNoGirlsPopup, setShowNoGirlsPopup] = useState(false);
+  const [mygateIdSuffix, setMygateIdSuffix] = useState("144");
 
   const allowedNames = [
     "gokulakrishnan",
@@ -44,6 +45,13 @@ export default function ProfileBlock() {
       setShowNoGirlsPopup(true);
       return;
     }
+    
+    // Only update ID if the name actually changed
+    if (draftName && draftName !== name) {
+      const randomSuffix = Math.floor(100 + Math.random() * 900).toString();
+      setMygateIdSuffix(randomSuffix);
+    }
+    
     setName(draftName || name);
     setIsEditing(false);
   };
@@ -90,7 +98,7 @@ export default function ProfileBlock() {
                 </h2>
               )}
               <div className="inline-flex items-center gap-2 bg-[#F6F6F6] rounded-full px-3 py-1">
-                <span className="text-[13px] text-slate-700">mygate ID 392 144</span>
+                <span className="text-[13px] text-slate-700">mygate ID 392 {mygateIdSuffix}</span>
                 <button className="flex items-center justify-center w-3.5 h-3.5 rounded-full border border-slate-500 text-slate-500">
                   <span className="text-[9px] font-bold">i</span>
                 </button>
