@@ -12,6 +12,7 @@ export default function ProfileBlock() {
 
   const girlNames = [
     "priya", "neha", "anjali", "pooja", "shreya", "sneha", "riya", "simran", "sarah", "jessica", "emily", "kavya", "aarti", "shruti", "swati", "divya", "nisha",
+    "deepika", "deepa", "aishwarya", "kareena", "katrina", "alia", "anushka", "priyanka", "shraddha",
     "female", "girl", "girls", "woman", "women", "lady"
   ];
 
