@@ -11,8 +11,23 @@ export default function ProfileBlock() {
   const [showNoGirlsPopup, setShowNoGirlsPopup] = useState(false);
 
   const girlNames = [
-    "priya", "neha", "anjali", "pooja", "shreya", "sneha", "riya", "simran", "sarah", "jessica", "emily", "kavya", "aarti", "shruti", "swati", "divya", "nisha",
-    "deepika", "deepa", "aishwarya", "kareena", "katrina", "alia", "anushka", "priyanka", "shraddha",
+    // Extensive Indian female names
+    "aditi", "aishwarya", "akansha", "alia", "amrita", "anjali", "anita", "anushka", "aarti", "asha", 
+    "bhavna", "bhoomika", "chitra", "deepa", "deepika", "diksha", "divya", "esha", "gargi", "gita", 
+    "hema", "ila", "isha", "jaya", "jyoti", "kajal", "kamala", "kareena", "karishma", "katrina", 
+    "kavita", "kavya", "kiran", "kirti", "komal", "kriti", "lata", "laxmi", "leela", "madhuri", 
+    "mala", "mamta", "manisha", "meena", "megha", "monika", "namrata", "nandini", "neha", "nidhi", 
+    "nikita", "nisha", "nivedita", "pallavi", "payal", "pooja", "poonam", "prachi", "preeti", "priya", 
+    "priyanka", "pushpa", "radha", "radhika", "ragini", "rakhi", "rashmi", "reena", "rekha", "richa", 
+    "riya", "roshni", "ruchi", "rupali", "sakshi", "sangeeta", "sanjana", "sapna", "saraswati", "sarita", 
+    "shalu", "shashi", "shikha", "shilpa", "shivani", "shraddha", "shreya", "shruti", "shweta", "simran", 
+    "smriti", "sneha", "sonali", "sonal", "sonia", "srishti", "sunita", "supriya", "sushma", "swati", 
+    "tanu", "tanvi", "tara", "tejaswini", "trisha", "tulsi", "uma", "urvashi", "vaishali", "vandana", 
+    "vidya", "vimala", "yamini", "yashoda", "zoya",
+    // Common international female names
+    "mary", "patricia", "jennifer", "linda", "elizabeth", "barbara", "susan", "jessica", "sarah", "karen",
+    "emily", "olivia", "emma", "chloe", "mia", "ava", "sophia", "isabella", "amelia", "harper",
+    // Generic terms
     "female", "girl", "girls", "woman", "women", "lady"
   ];
 
