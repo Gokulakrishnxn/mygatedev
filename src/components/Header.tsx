@@ -51,7 +51,7 @@ export default function Header() {
             <MessageSquare className="w-6 h-6" />
           </button>
           <Link href="/settings" className="w-9 h-9 rounded-full bg-slate-400 text-white flex items-center justify-center font-medium shadow-sm">
-            A
+            G
           </Link>
         </div>
       </header>

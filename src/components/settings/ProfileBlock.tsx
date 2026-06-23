@@ -4,16 +4,34 @@ import { IconQRCode } from "../Icons";
 import { useState } from "react";
 
 export default function ProfileBlock() {
-  const [name, setName] = useState("Aaryan");
+  const [name, setName] = useState("Gokul");
+  const [draftName, setDraftName] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [lastTap, setLastTap] = useState(0);
+  const [showNoGirlsPopup, setShowNoGirlsPopup] = useState(false);
+
+  const girlNames = [
+    "priya", "neha", "anjali", "pooja", "shreya", "sneha", "riya", "simran", "sarah", "jessica", "emily", "kavya", "aarti", "shruti", "swati", "divya", "nisha",
+    "female", "girl", "girls", "woman", "women", "lady"
+  ];
 
   const handleTap = () => {
     const now = Date.now();
     if (now - lastTap < 300) {
+      setDraftName(name);
       setIsEditing(true);
     }
     setLastTap(now);
+  };
+
+  const saveName = () => {
+    const normalized = draftName.trim().toLowerCase();
+    if (girlNames.includes(normalized)) {
+      setShowNoGirlsPopup(true);
+      return;
+    }
+    setName(draftName || name);
+    setIsEditing(false);
   };
 
   return (
@@ -39,11 +57,11 @@ export default function ProfileBlock() {
               {isEditing ? (
                 <input
                   type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  onBlur={() => setIsEditing(false)}
+                  value={draftName}
+                  onChange={(e) => setDraftName(e.target.value)}
+                  onBlur={saveName}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") setIsEditing(false);
+                    if (e.key === "Enter") saveName();
                   }}
                   autoFocus
                   className="text-[20px] text-slate-900 mb-2 font-medium bg-white border-b-2 border-slate-300 outline-none w-full max-w-[150px] px-1 py-0"
@@ -88,6 +106,25 @@ export default function ProfileBlock() {
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
       </div>
+
+      {/* No Girls Allowed Popup */}
+      {showNoGirlsPopup && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 px-4">
+          <div className="bg-white rounded-[24px] p-6 w-full max-w-[320px] flex flex-col items-center text-center shadow-xl animate-in zoom-in-95 duration-200">
+            <div className="w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mb-4">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">No Girls Allowed!</h3>
+            <p className="text-[14px] text-slate-500 mb-6">You cannot use a girl's name for this profile.</p>
+            <button 
+              onClick={() => { setShowNoGirlsPopup(false); setIsEditing(false); }}
+              className="w-full py-3.5 bg-red-500 text-white font-bold rounded-xl active:scale-95 transition-transform text-[15px]"
+            >
+              Okay, my bad
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
