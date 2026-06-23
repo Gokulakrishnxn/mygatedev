@@ -19,7 +19,8 @@ export default function BuySellPage() {
           <div className="px-4 py-2 mb-4">
             <AdBanner 
               src="/top_banner_ad.png" 
-              alt="Premium Credit Card Advertisement" 
+              alt="Premium Credit Card Advertisement"
+              priority
             />
           </div>
 

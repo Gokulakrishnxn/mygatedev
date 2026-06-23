@@ -20,7 +20,8 @@ export default function Home() {
             </p>
             <AdBanner 
               src="/top_banner_ad.png" 
-              alt="Premium Credit Card Advertisement" 
+              alt="Premium Credit Card Advertisement"
+              priority
             />
           </div>
 

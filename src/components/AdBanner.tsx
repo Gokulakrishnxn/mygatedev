@@ -6,9 +6,10 @@ interface AdBannerProps {
   alt: string;
   className?: string;
   adTextPosition?: "top-left" | "top-right";
+  priority?: boolean;
 }
 
-export default function AdBanner({ src, alt, className, adTextPosition = "top-left" }: AdBannerProps) {
+export default function AdBanner({ src, alt, className, adTextPosition = "top-left", priority }: AdBannerProps) {
   return (
     <div className={cn("relative w-full overflow-hidden rounded-xl", className)}>
       <div className="relative aspect-[21/9] w-full">
@@ -16,6 +17,7 @@ export default function AdBanner({ src, alt, className, adTextPosition = "top-le
           src={src}
           alt={alt}
           fill
+          priority={priority}
           sizes="(max-width: 768px) 100vw, 448px"
           className="object-cover"
         />
