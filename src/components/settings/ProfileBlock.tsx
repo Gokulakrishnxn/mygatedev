@@ -25,7 +25,8 @@ export default function ProfileBlock() {
     "sanjay",
     "chandru",
     "sundareshwaran",
-    "hemachandran"
+    "hemachandran",
+    "shyam.a.v"
   ];
 
   const handleTap = () => {
