@@ -8,27 +8,19 @@ export default function ProfileBlock() {
   const [draftName, setDraftName] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [lastTap, setLastTap] = useState(0);
-  const [showNoGirlsPopup, setShowNoGirlsPopup] = useState(false);
-
-  const girlNames = [
-    // Extensive Indian female names
-    "aditi", "aishwarya", "akansha", "alia", "amrita", "anjali", "anita", "anushka", "aarti", "asha", 
-    "bhavna", "bhoomika", "chitra", "deepa", "deepika", "diksha", "divya", "esha", "gargi", "gita", 
-    "hema", "ila", "isha", "jaya", "jyoti", "kajal", "kamala", "kareena", "karishma", "katrina", 
-    "kavita", "kavya", "kiran", "kirti", "komal", "kriti", "lata", "laxmi", "leela", "madhuri", 
-    "mala", "mamta", "manisha", "meena", "megha", "monika", "namrata", "nandini", "neha", "nidhi", 
-    "nikita", "nisha", "nivedita", "pallavi", "payal", "pooja", "poonam", "prachi", "preeti", "priya", 
-    "priyanka", "pushpa", "radha", "radhika", "ragini", "rakhi", "rashmi", "reena", "rekha", "richa", 
-    "riya", "roshni", "ruchi", "rupali", "sakshi", "sangeeta", "sanjana", "sapna", "saraswati", "sarita", 
-    "shalu", "shashi", "shikha", "shilpa", "shivani", "shraddha", "shreya", "shruti", "shweta", "simran", 
-    "smriti", "sneha", "sonali", "sonal", "sonia", "srishti", "sunita", "supriya", "sushma", "swati", 
-    "tanu", "tanvi", "tara", "tejaswini", "trisha", "tulsi", "uma", "urvashi", "vaishali", "vandana", 
-    "vidya", "vimala", "yamini", "yashoda", "zoya",
-    // Common international female names
-    "mary", "patricia", "jennifer", "linda", "elizabeth", "barbara", "susan", "jessica", "sarah", "karen",
-    "emily", "olivia", "emma", "chloe", "mia", "ava", "sophia", "isabella", "amelia", "harper",
-    // Generic terms
-    "female", "girl", "girls", "woman", "women", "lady"
+  const allowedNames = [
+    "gokulakrishnan",
+    "aaryan",
+    "ezhil",
+    "sridhar",
+    "krithik",
+    "madhan",
+    "lingesh",
+    "naveen",
+    "seran",
+    "sundar",
+    "jawahar kannan",
+    "sanjay"
   ];
 
   const handleTap = () => {
@@ -42,7 +34,7 @@ export default function ProfileBlock() {
 
   const saveName = () => {
     const normalized = draftName.trim().toLowerCase();
-    if (girlNames.includes(normalized)) {
+    if (!allowedNames.includes(normalized)) {
       setShowNoGirlsPopup(true);
       return;
     }
@@ -130,9 +122,9 @@ export default function ProfileBlock() {
             <div className="w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mb-4">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-2">No Girls Allowed!</h3>
-            <p className="text-[14px] text-slate-500 mb-6">You cannot use a girl's name for this profile.</p>
-            <button 
+            <h3 className="text-xl font-bold text-slate-900 mb-2">Access Denied!</h3>
+            <p className="text-[14px] text-slate-500 mb-6">You are not an authorized user for this app. Only the boys are allowed!</p>
+            <button  
               onClick={() => { setShowNoGirlsPopup(false); setIsEditing(false); }}
               className="w-full py-3.5 bg-red-500 text-white font-bold rounded-xl active:scale-95 transition-transform text-[15px]"
             >
