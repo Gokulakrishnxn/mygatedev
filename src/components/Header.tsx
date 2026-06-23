@@ -47,7 +47,10 @@ export default function Header() {
           <button className="text-slate-700 hover:text-slate-900 transition-colors" onClick={handleTap} title="Double tap to edit society name">
             <Search className="w-6 h-6" />
           </button>
-          <button className="text-slate-700 hover:text-slate-900 transition-colors relative">
+          <button 
+            className="text-slate-700 hover:text-slate-900 transition-colors relative"
+            onClick={() => window.alert("Downloading MyGate App...")}
+          >
             <MessageSquare className="w-6 h-6" />
           </button>
           <Link href="/settings" className="w-9 h-9 rounded-full bg-slate-400 text-white flex items-center justify-center font-medium shadow-sm">
@@ -81,7 +84,10 @@ export default function Header() {
                 <button className="text-slate-700">
                   <Search className="w-6 h-6" />
                 </button>
-                <button className="text-slate-700 relative">
+                <button 
+                  className="text-slate-700 relative"
+                  onClick={() => window.alert("Downloading MyGate App...")}
+                >
                   <MessageSquare className="w-6 h-6" />
                 </button>
                 <button className="w-9 h-9 rounded-full bg-slate-400 text-white flex items-center justify-center font-medium shadow-sm">
