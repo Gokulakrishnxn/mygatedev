@@ -1,10 +1,6 @@
 "use client";
 
-import { MessageSquare, Smartphone, X } from "lucide-react";
-
-const APP_STORE_URL = "https://apps.apple.com/in/app/mygate-premium/id1101762651";
-const PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.mygate.user";
+import { MessageSquare, X } from "lucide-react";
 
 interface DownloadAppModalProps {
   open: boolean;
@@ -31,45 +27,22 @@ export default function DownloadAppModal({ open, onClose }: DownloadAppModalProp
           <X className="h-5 w-5" />
         </button>
 
-        <div className="mb-5 flex flex-col items-center text-center">
+        <div className="mb-6 flex flex-col items-center text-center">
           <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#173F45] text-white">
             <MessageSquare className="h-7 w-7" />
           </div>
-          <h3 className="text-xl font-bold text-slate-900">Get the MyGate App</h3>
+          <h3 className="text-xl font-bold text-slate-900">Download MyGate App</h3>
           <p className="mt-2 text-sm leading-relaxed text-slate-500">
-            Download the official app for faster access, notifications, and the
-            full MyGate experience on your phone.
+            Download the APK on your phone to install and use the MyGate app.
           </p>
         </div>
 
-        <div className="space-y-3">
-          <a
-            href={APP_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-black px-4 py-3.5 text-sm font-semibold text-white transition-transform active:scale-[0.98]"
-          >
-            <Smartphone className="h-4 w-4" />
-            Download on App Store
-          </a>
-
-          <a
-            href={PLAY_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#173F45] px-4 py-3.5 text-sm font-semibold text-white transition-transform active:scale-[0.98]"
-          >
-            <Smartphone className="h-4 w-4" />
-            Get it on Google Play
-          </a>
-
-          <button
-            onClick={onClose}
-            className="w-full rounded-xl border border-slate-200 px-4 py-3.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
-          >
-            Continue using web app
-          </button>
-        </div>
+        <button
+          onClick={onClose}
+          className="w-full rounded-xl bg-[#173F45] px-4 py-3.5 text-sm font-semibold text-white transition-transform active:scale-[0.98]"
+        >
+          Okay
+        </button>
       </div>
     </div>
   );
