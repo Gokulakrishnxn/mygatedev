@@ -1,6 +1,19 @@
 import React from "react";
 
-const metrics = [
+interface MetricDataItem {
+  value: string;
+  label: string;
+  valueColor: string;
+  isStar?: boolean;
+  isShield?: boolean;
+}
+
+interface MetricCategory {
+  title: string;
+  data: MetricDataItem[];
+}
+
+const metrics: MetricCategory[] = [
   {
     title: "Helpdesk Tickets",
     data: [
