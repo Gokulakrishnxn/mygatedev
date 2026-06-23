@@ -27,7 +27,7 @@ export default function HouseholdSection() {
         <div className="flex-1 rounded-xl border border-gray-200 p-3 flex justify-between items-center bg-white shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
           <div className="flex flex-col">
             <span className="text-[13px] text-slate-800">Family</span>
-            <span className="text-[12px] text-slate-500 mt-0.5">2 members</span>
+            <span className="text-[12px] text-slate-500 mt-0.5">4 members</span>
           </div>
           <div className="relative">
             <div className="flex -space-x-3">
