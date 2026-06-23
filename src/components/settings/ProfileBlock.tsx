@@ -8,6 +8,8 @@ export default function ProfileBlock() {
   const [draftName, setDraftName] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [lastTap, setLastTap] = useState(0);
+  const [showNoGirlsPopup, setShowNoGirlsPopup] = useState(false);
+
   const allowedNames = [
     "gokulakrishnan",
     "aaryan",
@@ -20,7 +22,9 @@ export default function ProfileBlock() {
     "seran",
     "sundar",
     "jawahar kannan",
-    "sanjay"
+    "sanjay",
+    "chandru",
+    "sundareshwaran"
   ];
 
   const handleTap = () => {
