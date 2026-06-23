@@ -1,6 +1,15 @@
 import { Bell, Plus, ChevronRight } from "lucide-react";
 
-const updates = [
+type EntryUpdate = {
+  name: string;
+  role: string;
+  icon?: boolean;
+  showPlus?: boolean;
+  image?: string;
+  status?: "gray";
+};
+
+const updates: EntryUpdate[] = [
   {
     name: "Daily Help",
     role: "",
